@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The WebSite Of AyRan</title>
+    <style>
+        /* Stile globale */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f0;
+            color: #333;
+            overflow: hidden; /* Nasconde elementi fuori dalla schermata */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff99cc;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .menu div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background-color: #ffe6f0;
+            border: 1px solid #ff99cc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .dropdown a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .dropdown a img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .dropdown a:hover {
+            background-color: #ff99cc;
+            color: #fff;
+        }
+
+        .home-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .home-link img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        /* Sakura Falling Animation */
+        .sakura {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url('https://i.pinimg.com/originals/3d/3c/44/3d3c44a192b5015ec1b9b78b3e7eb3de.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.5;
+            }
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function createSakura() {
+            const sakura = document.createElement('div');
+            sakura.classList.add('sakura');
+            sakura.style.left = Math.random() * 100 + 'vw';
+            sakura.style.animationDuration = Math.random() * 3 + 2 + 's';
+            sakura.style.opacity = Math.random();
+            document.body.appendChild(sakura);
+
+            setTimeout(() => {
+                sakura.remove();
+            }, 5000);
+        }
+
+        setInterval(createSakura, 200); // Genera nuovi fiori ogni 200ms
+    </script>
+</head>
+<body>
+    <a href="index.html" class="home-link">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home">
+        Main Page
+    </a>
+    <div class="container">
+        <img class="logo" src="https://i.pinimg.com/736x/8c/fe/ed/8cfeed5fef181d8bb654f99ace2c2421.jpg" alt="Logo">
+        <h1>🌸💗The WebSite Of AyRan💗🌸</h1>
+    </div>
+    <div class="menu" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="dropdown">
+        <a href="adoptme.html">
+            <img src="https://cdn-icons-png.flaticon.com/512/2378/2378029.png" alt="Adopt Me">
+            Adopt Me
+        </a>
+    </div>
+</body>
+</html>
